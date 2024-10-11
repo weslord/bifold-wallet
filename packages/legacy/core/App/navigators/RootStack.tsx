@@ -33,6 +33,7 @@ import DeliveryStack from './DeliveryStack'
 import NotificationStack from './NotificationStack'
 import ProofRequestStack from './ProofRequestStack'
 import SettingStack from './SettingStack'
+import SendVideoStack from '../modules/send-video/SendVideoStack'
 import TabStack from './TabStack'
 import { useDefaultStackOptions } from './defaultStackOptions'
 
@@ -307,6 +308,13 @@ const RootStack: React.FC = () => {
         <Stack.Screen
           name={Stacks.HistoryStack}
           component={HistoryStack}
+          options={{
+            cardStyleInterpolator: forFade,
+          }}
+        />
+        <Stack.Screen
+          name={'Send Video'}
+          component={SendVideoStack}
           options={{
             cardStyleInterpolator: forFade,
           }}
