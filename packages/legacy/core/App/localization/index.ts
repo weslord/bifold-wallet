@@ -8,7 +8,7 @@ import en from './en'
 import fr from './fr'
 import ptBr from './pt-br'
 
-export type Translation = typeof en
+export type Translation = typeof en & typeof sendVideoEn
 
 export type TranslationResources = {
   [key: string]: any
