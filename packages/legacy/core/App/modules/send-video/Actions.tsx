@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-
-import { prompts } from './prompts'
 
 import Text from '../../components/texts/Text'
 import Title from '../../components/texts/Title'
 
 const Actions: React.FC = () => {
+  const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:3100/api/v1/session', {method: 'POST'})
+      .then(response => response.json())
+      .then(sessionData => {
+        console.log(sessionData)
+        setPrompts(sessionData.prompts)
+      })
+  }, [])
+
   const styles = StyleSheet.create({
     instruction: {
       textAlign: 'left',
@@ -34,9 +43,9 @@ const Actions: React.FC = () => {
   return (
     <>
       {prompts?.map((instruction, index) => (
-        <View key={index} style={styles.instructionItem}>
+        <View key={instruction.id} style={styles.instructionItem}>
           <Title style={styles.count}>{index + 1}.</Title>
-          <Text style={styles.instruction}>{instruction}</Text>
+          <Text style={styles.instruction}>{instruction.text}</Text>
         </View>
       ))}
     </>
