@@ -1,11 +1,11 @@
 export enum Screens {
-  VideoInstructions = 'Instructions',
-  VerifyVideo = 'Capture Video',
+  VideoInstructions = 'Video Instructions',
+  CaptureVideo = 'Capture Video',
   SubmitVideo = 'Submit Video',
 }
 
 export type SendVideoStackParams = {
   [Screens.VideoInstructions]: undefined
-  [Screens.VerifyVideo]: undefined
+  [Screens.CaptureVideo]: undefined
   [Screens.SubmitVideo]: undefined
 }
