@@ -10,28 +10,30 @@ import Actions from '../components/Actions'
 import Instructions from '../components/Instructions'
 import Button, { ButtonType } from '../../../components/buttons/Button'
 import Title from '../../../components/texts/Title'
+import Text from '../../../components/texts/Text'
 import { SendVideoStackParams, Screens } from '../types/navigators'
 import { testIdWithKey } from '../../../utils/testable'
-import { Prompt } from '../types/api'
+import { Session } from '../types/api'
 
 type VideoInstructionsProps = StackScreenProps<SendVideoStackParams, Screens.VideoInstructions>
 
 const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<StackNavigationProp<SendVideoStackParams>>()
-  const [prompts, setPrompts] = useState<Prompt[]>([])
+  const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
-    fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, {method: 'POST'})
-      .then(response => response.json())
-      .then(sessionData => {
-        console.log(sessionData)
-        setPrompts(sessionData.prompts)
+    fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, { method: 'POST' })
+      .then((response) => response.json())
+      .then((sessionData: Session) => {
+        setSession(sessionData)
       })
   }, [])
 
   const onPress = () => {
-    navigation.navigate(Screens.CaptureVideo, { prompts })
+    if (session) {
+      navigation.navigate(Screens.CaptureVideo, { session: session })
+    }
   }
 
   const styles = StyleSheet.create({
@@ -114,6 +116,8 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
     },
   })
 
+  if (!session) return <Text>Loading...</Text>
+
   return (
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.subContainer}>
@@ -121,7 +125,7 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
 
         <View style={styles.topInfoContainer}>
           <Title style={styles.topInfoHeading}>{t('SendVideo.VideoInstructions.YouWillBeAskedToDo')}</Title>
-          <Actions prompts={prompts}/>
+          <Actions prompts={session.prompts} />
         </View>
 
         <View style={styles.instructionsContainer}>
