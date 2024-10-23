@@ -11,10 +11,11 @@ import { DispatchAction } from '../contexts/reducers/store'
 import { useStore } from '../contexts/store'
 import { useTheme } from '../contexts/theme'
 import { useTour } from '../contexts/tour/tour-context'
-import { HomeStackParams, Screens } from '../types/navigators'
+import { HomeStackParams, Screens, Stacks } from '../types/navigators'
 import { TourID } from '../types/tour'
 import Button, { ButtonType } from '../components/buttons/Button'
 import { useNavigation } from '@react-navigation/native'
+import { Screens as SendVideoScreens } from '../modules/send-video/types/navigators'
 
 type HomeProps = StackScreenProps<HomeStackParams, Screens.Home>
 
@@ -167,7 +168,7 @@ const Home: React.FC<HomeProps> = () => {
       <View style={{ marginBottom: 100 }}>
         <Button
           title={'Verify by Video (DEMO)'}
-          onPress={() => navigation.getParent()?.navigate('Send Video', { screen: 'Instructions' })}
+          onPress={() => navigation.getParent()?.navigate(Stacks.SendVideoStack, { screen: SendVideoScreens.VideoInstructions })}
           buttonType={ButtonType.Primary}
         />
       </View>

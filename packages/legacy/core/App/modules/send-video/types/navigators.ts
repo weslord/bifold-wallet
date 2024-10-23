@@ -1,11 +1,7 @@
-export enum Stacks {
-  SendVideoStack = 'Send Video',
-}
-
 export enum Screens {
   VideoInstructions = 'Instructions',
   VerifyVideo = 'Capture Video',
-  SubmitVideo = 'Send Video',
+  SubmitVideo = 'Submit Video',
 }
 
 export type SendVideoStackParams = {
