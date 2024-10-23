@@ -6956,7 +6956,7 @@ __metadata:
     query-string: ^7.0.1
     react: "*"
     react-i18next: 11.13.0
-    react-native: "*"
+    react-native: ^0.75.0
     react-native-animated-pagination-dots: ^0.1.72
     react-native-argon2: ^2.0.1
     react-native-bouncy-checkbox: ^3.0.5
