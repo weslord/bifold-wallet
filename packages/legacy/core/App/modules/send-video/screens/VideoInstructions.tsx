@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/core'
 import { StackScreenProps, StackNavigationProp } from '@react-navigation/stack'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ScrollView, View, StyleSheet } from 'react-native'
+import { Config } from 'react-native-config'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Actions from '../components/Actions'
@@ -20,6 +21,18 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
   const onPress = () => {
     navigation.navigate(Screens.VerifyVideo)
   }
+
+  const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])
+
+  useEffect(() => {
+    fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, {method: 'POST'})
+      .then(response => response.json())
+      .then(sessionData => {
+        console.log(sessionData)
+        setPrompts(sessionData.prompts)
+      })
+  }, [])
+
   const styles = StyleSheet.create({
     container: {
       width: '100%',
@@ -107,7 +120,7 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
 
         <View style={styles.topInfoContainer}>
           <Title style={styles.topInfoHeading}>{t('SendVideo.VideoInstructions.YouWillBeAskedToDo')}</Title>
-          <Actions />
+          <Actions prompts={prompts}/>
         </View>
 
         <View style={styles.instructionsContainer}>
