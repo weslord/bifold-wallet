@@ -19,7 +19,7 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<StackNavigationProp<SendVideoStackParams>>()
   const onPress = () => {
-    navigation.navigate(Screens.VerifyVideo)
+    navigation.navigate(Screens.CaptureVideo)
   }
 
   const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])

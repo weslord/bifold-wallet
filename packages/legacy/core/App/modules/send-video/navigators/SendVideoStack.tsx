@@ -7,7 +7,7 @@ import { useDefaultStackOptions } from '../../../navigators/defaultStackOptions'
 import { SendVideoStackParams, Screens } from '../types/navigators'
 // import { testIdWithKey } from '../../utils/testable'
 import SubmitVideo from '../screens/SubmitVideo'
-import VerifyVideo from '../screens/VerifyVideo'
+import CaptureVideo from '../screens/CaptureVideo'
 import VideoInstructions from '../screens/VideoInstructions'
 
 const SendVideoStack: React.FC = () => {
@@ -27,8 +27,8 @@ const SendVideoStack: React.FC = () => {
         })}
       />
       <Stack.Screen
-        name={Screens.VerifyVideo}
-        component={VerifyVideo}
+        name={Screens.CaptureVideo}
+        component={CaptureVideo}
         options={() => ({
           title: t('SendVideo.Screens.VerifyVideo'),
           headerRight: () => null,

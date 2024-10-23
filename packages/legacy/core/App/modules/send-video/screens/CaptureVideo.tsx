@@ -14,7 +14,7 @@ import { testIdWithKey } from '../../../utils/testable'
 
 const endpoint = `http://localhost:3000`
 
-const Scanner = () => {
+const CaptureVideo = () => {
   const navigation = useNavigation()
   const { t } = useTranslation()
   const camera = useRef<Camera | null>(null)
@@ -246,4 +246,4 @@ const Scanner = () => {
   )
 }
 
-export default Scanner
+export default CaptureVideo
