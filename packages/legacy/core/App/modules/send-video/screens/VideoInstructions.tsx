@@ -12,17 +12,14 @@ import Button, { ButtonType } from '../../../components/buttons/Button'
 import Title from '../../../components/texts/Title'
 import { SendVideoStackParams, Screens } from '../types/navigators'
 import { testIdWithKey } from '../../../utils/testable'
+import { Prompt } from '../types/api'
 
 type VideoInstructionsProps = StackScreenProps<SendVideoStackParams, Screens.VideoInstructions>
 
 const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<StackNavigationProp<SendVideoStackParams>>()
-  const onPress = () => {
-    navigation.navigate(Screens.CaptureVideo)
-  }
-
-  const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])
+  const [prompts, setPrompts] = useState<Prompt[]>([])
 
   useEffect(() => {
     fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, {method: 'POST'})
@@ -32,6 +29,10 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
         setPrompts(sessionData.prompts)
       })
   }, [])
+
+  const onPress = () => {
+    navigation.navigate(Screens.CaptureVideo, { prompts })
+  }
 
   const styles = StyleSheet.create({
     container: {

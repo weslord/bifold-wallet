@@ -3,8 +3,9 @@ import { StyleSheet, View } from 'react-native'
 
 import Text from '../../../components/texts/Text'
 import Title from '../../../components/texts/Title'
+import { Prompt } from '../types/api'
 
-const Actions: React.FC<{prompts: {id: string, text: string}[]}> = ({prompts}) => {
+const Actions: React.FC<{prompts: Prompt[]}> = ({prompts}) => {
   const styles = StyleSheet.create({
     instruction: {
       textAlign: 'left',

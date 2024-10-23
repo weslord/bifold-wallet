@@ -1,3 +1,5 @@
+import { Prompt } from "./api"
+
 export enum Screens {
   VideoInstructions = 'Video Instructions',
   CaptureVideo = 'Capture Video',
@@ -6,6 +8,6 @@ export enum Screens {
 
 export type SendVideoStackParams = {
   [Screens.VideoInstructions]: undefined
-  [Screens.CaptureVideo]: undefined
+  [Screens.CaptureVideo]: { prompts: Prompt[]}
   [Screens.SubmitVideo]: undefined
 }
