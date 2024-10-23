@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useNavigation } from '@react-navigation/core'
 import { StackScreenProps, StackNavigationProp } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
@@ -23,11 +24,9 @@ const VideoInstructions: React.FC<VideoInstructionsProps> = () => {
   const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
-    fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, { method: 'POST' })
-      .then((response) => response.json())
-      .then((sessionData: Session) => {
-        setSession(sessionData)
-      })
+    axios.post<Session>(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`).then((response) => {
+      setSession(response.data)
+    })
   }, [])
 
   const onPress = () => {
