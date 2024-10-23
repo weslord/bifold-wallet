@@ -24,7 +24,6 @@ const SendVideoStack: React.FC = () => {
         options={() => ({
           title: t('SendVideo.Screens.VideoInstructions'),
           headerRight: () => null,
-          headerLeft: () => null,
         })}
       />
       <Stack.Screen
