@@ -32,7 +32,7 @@ const CaptureVideo: React.FC<StackScreenProps<SendVideoStackParams, Screens.Capt
     { videoResolution: 'max' },
   ])
 
-  const prompts = route.params.prompts.map(prompt => prompt.text)
+  const prompts = route.params.session.prompts.map(prompt => prompt.text)
 
   const styles = StyleSheet.create({
     container: {
