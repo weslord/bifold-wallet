@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next'
 import { ScrollView, View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import Actions from './Actions'
-import Instructions from './Instructions'
-import Button, { ButtonType } from '../../components/buttons/Button'
-import Title from '../../components/texts/Title'
-import { SendVideoStackParams, Screens } from './types/navigators'
-import { testIdWithKey } from '../../utils/testable'
+import Actions from '../components/Actions'
+import Instructions from '../components/Instructions'
+import Button, { ButtonType } from '../../../components/buttons/Button'
+import Title from '../../../components/texts/Title'
+import { SendVideoStackParams, Screens } from '../types/navigators'
+import { testIdWithKey } from '../../../utils/testable'
 
 type VideoInstructionsProps = StackScreenProps<SendVideoStackParams, Screens.VideoInstructions>
 
