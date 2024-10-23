@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
+import { Config } from 'react-native-config'
 
 import Text from '../../components/texts/Text'
 import Title from '../../components/texts/Title'
@@ -8,7 +9,7 @@ const Actions: React.FC = () => {
   const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:3100/api/v1/session', {method: 'POST'})
+    fetch(`${Config.VIDEO_VERIFIER_HOST}/api/v1/session`, {method: 'POST'})
       .then(response => response.json())
       .then(sessionData => {
         console.log(sessionData)
