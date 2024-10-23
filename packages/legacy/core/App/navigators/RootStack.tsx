@@ -313,7 +313,7 @@ const RootStack: React.FC = () => {
           }}
         />
         <Stack.Screen
-          name={'Send Video'}
+          name={Stacks.SendVideoStack}
           component={SendVideoStack}
           options={{
             cardStyleInterpolator: forFade,
