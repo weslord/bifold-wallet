@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Config } from 'react-native-config'
 
-import Text from '../../components/texts/Text'
-import Title from '../../components/texts/Title'
+import Text from '../../../components/texts/Text'
+import Title from '../../../components/texts/Title'
 
 const Actions: React.FC = () => {
   const [prompts, setPrompts] = useState<{id: string, text: string}[]>([])

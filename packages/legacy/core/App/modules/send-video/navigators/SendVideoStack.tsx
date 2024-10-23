@@ -2,13 +2,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useTheme } from '../../contexts/theme'
-import { useDefaultStackOptions } from '../../navigators/defaultStackOptions'
-import { SendVideoStackParams, Screens } from './types/navigators'
+import { useTheme } from '../../../contexts/theme'
+import { useDefaultStackOptions } from '../../../navigators/defaultStackOptions'
+import { SendVideoStackParams, Screens } from '../types/navigators'
 // import { testIdWithKey } from '../../utils/testable'
-import SubmitVideo from './SubmitVideo'
-import VerifyVideo from './VerifyVideo'
-import VideoInstructions from './VideoInstructions'
+import SubmitVideo from '../screens/SubmitVideo'
+import VerifyVideo from '../screens/VerifyVideo'
+import VideoInstructions from '../screens/VideoInstructions'
 
 const SendVideoStack: React.FC = () => {
   const Stack = createStackNavigator<SendVideoStackParams>()

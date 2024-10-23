@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next'
 import { Alert, StyleSheet, View, ActivityIndicator, useWindowDimensions } from 'react-native'
 import RNFS from 'react-native-fs'
 import { Camera, useCameraDevice, useCameraFormat } from 'react-native-vision-camera'
-import Button, { ButtonType } from '../../components/buttons/Button'
-import Text from '../../components/texts/Text'
-import Title from '../../components/texts/Title'
-import { prompts } from './prompts'
-import { testIdWithKey } from '../../utils/testable'
+import Button, { ButtonType } from '../../../components/buttons/Button'
+import Text from '../../../components/texts/Text'
+import Title from '../../../components/texts/Title'
+import { prompts } from '../prompts'
+import { testIdWithKey } from '../../../utils/testable'
 
 const endpoint = `http://localhost:3000`
 
